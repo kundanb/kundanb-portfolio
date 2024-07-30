@@ -1,33 +1,345 @@
+@import '@flaticon/flaticon-uicons/css/all/all';
+
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
+
+/**
+ * ------------------------
+ * Colors
+ * ------------------------
+ */
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-bg: 255 255 255;
+  --color-fg: 16 16 19;
+
+  --color-primary: 99 102 241;
+  --color-primary-fg: 242 242 248;
+
+  --color-pop: 139 92 246;
+  --color-pop-fg: 242 242 248;
+
+  --color-secondary: 242 242 248;
+  --color-secondary-fg: 41 41 66;
+
+  --color-accent: 41 41 66;
+  --color-accent-fg: 242 242 248;
+
+  --color-muted: 190 190 218;
+  --color-muted-bg: 242 242 248;
+
+  --color-error: 239 68 68;
+  --color-error-bg: 254 242 242;
+
+  --color-warning: 234 179 8;
+  --color-warning-bg: 254 252 232;
+
+  --color-success: 34 197 94;
+  --color-success-bg: 240 253 244;
+
+  --color-info: 59 130 246;
+  --color-info-bg: 239 246 255;
+
+  --color-border: 238 238 244;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/**
+ * ------------------------
+ * Colors: Dark Mode
+ * ------------------------
+ */
+
+.dark {
+  --color-bg: 16 16 19;
+  --color-fg: 242 242 248;
+
+  --color-primary: 99 102 241;
+  --color-primary-fg: 242 242 248;
+
+  --color-pop: 139 92 246;
+  --color-pop-fg: 242 242 248;
+
+  --color-secondary: 41 41 66;
+  --color-secondary-fg: 242 242 248;
+
+  --color-accent: 242 242 248;
+  --color-accent-fg: 41 41 66;
+
+  --color-muted: 190 190 218;
+  --color-muted-bg: 41 41 66;
+
+  --color-error: 239 68 68;
+  --color-error-bg: 69 10 10;
+
+  --color-warning: 234 179 8;
+  --color-warning-bg: 66 32 6;
+
+  --color-success: 34 197 94;
+  --color-success-bg: 5 46 22;
+
+  --color-info: 59 130 246;
+  --color-info-bg: 23 37 84;
+
+  --color-border: 33 33 46;
+}
+
+/**
+ * ------------------------
+ * Reset Styles
+ * ------------------------
+ */
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-bg text-fg antialiased font-sans;
+  }
+
+  a {
+    @apply font-medium;
+  }
+
+  :disabled {
+    @apply opacity-50 cursor-default pointer-events-none;
+  }
+
+  i.fi {
+    @apply inline-flex justify-center items-center;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+/**
+ * ------------------------
+ * Utility Classes
+ * ------------------------
+ */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .disabled {
+    @apply opacity-50 cursor-default pointer-events-none;
+  }
+}
+
+/**
+ * ------------------------
+ * Components
+ * ------------------------
+ */
+
+@layer components {
+  .section {
+    @apply py-6 sm:py-8 md:py-10 lg:py-12 xl:py-14 2xl:py-16;
+  }
+
+  /**
+   * ------------------------
+   * Buttons
+   * ------------------------
+   */
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply h-10 px-3 cursor-pointer;
+    @apply rounded-md bg-transparent border border-transparent;
+    @apply transition-all;
+    @apply font-medium;
+  }
+  .btn-icon {
+    @apply btn px-0 aspect-square rounded-full;
+  }
+  .btn0 {
+    @apply btn h-auto px-0 rounded-none border-none;
+  }
+
+  /**
+   * ------------------------
+   * Solid Buttons
+   * ------------------------
+   */
+
+  .btn-s-primary {
+    @apply bg-primary text-primary-fg;
+    @apply hover:bg-primary/85 focus:bg-primary/85;
+  }
+  .btn-s-pop {
+    @apply bg-pop text-pop-fg;
+    @apply hover:bg-pop/85 focus:bg-pop/85;
+  }
+  .btn-s-secondary {
+    @apply bg-secondary text-secondary-fg;
+    @apply hover:bg-secondary/85 focus:bg-secondary/85;
+  }
+  .btn-s-accent {
+    @apply bg-accent text-accent-fg;
+    @apply hover:bg-accent/85 focus:bg-accent/85;
+  }
+  .btn-s-muted {
+    @apply bg-muted-bg text-muted;
+  }
+  .btn-s-error {
+    @apply bg-error-bg text-error;
+    @apply hover:bg-error-bg/85 focus:bg-error-bg/85;
+  }
+  .btn-s-warning {
+    @apply bg-warning-bg text-warning;
+    @apply hover:bg-warning-bg/85 focus:bg-warning-bg/85;
+  }
+  .btn-s-success {
+    @apply bg-success-bg text-success;
+    @apply hover:bg-success-bg/85 focus:bg-success-bg/85;
+  }
+  .btn-s-info {
+    @apply bg-info-bg text-info;
+    @apply hover:bg-info-bg/85 focus:bg-info-bg/85;
+  }
+
+  /**
+   * ------------------------
+   * Outline Buttons
+   * ------------------------
+   */
+
+  .btn-o-primary {
+    @apply border-primary text-primary;
+    @apply hover:border-primary/85 hover:text-primary/85;
+    @apply focus:border-primary/85 focus:text-primary/85;
+  }
+  .btn-o-pop {
+    @apply border-pop text-pop;
+    @apply hover:border-pop/85 hover:text-pop/85;
+    @apply focus:border-pop/85 focus:text-pop/85;
+  }
+  .btn-o-secondary {
+    @apply border-secondary text-secondary;
+    @apply hover:border-secondary/85 hover:text-secondary/85;
+    @apply focus:border-secondary/85 focus:text-secondary/85;
+  }
+  .btn-o-accent {
+    @apply border-accent text-accent;
+    @apply hover:border-accent/85 hover:text-accent/85;
+    @apply focus:border-accent/85 focus:text-accent/85;
+  }
+  .btn-o-muted {
+    @apply border-muted text-muted;
+  }
+  .btn-o-error {
+    @apply border-error text-error;
+    @apply hover:border-error/85 hover:text-error/85;
+    @apply focus:border-error/85 focus:text-error/85;
+  }
+  .btn-o-warning {
+    @apply border-warning text-warning;
+    @apply hover:border-warning/85 hover:text-warning/85;
+    @apply focus:border-warning/85 focus:text-warning/85;
+  }
+  .btn-o-success {
+    @apply border-success text-success;
+    @apply hover:border-success/85 hover:text-success/85;
+    @apply focus:border-success/85 focus:text-success/85;
+  }
+  .btn-o-info {
+    @apply border-info text-info;
+    @apply hover:border-info/85 hover:text-info/85;
+    @apply focus:border-info/85 focus:text-info/85;
+  }
+
+  /**
+   * ------------------------
+   * Text Buttons
+   * ------------------------
+   */
+
+  .btn-t-primary {
+    @apply text-primary;
+    @apply hover:text-primary/85 focus:text-primary/85;
+  }
+  .btn-t-pop {
+    @apply text-pop;
+    @apply hover:text-pop/85 focus:text-pop/85;
+  }
+  .btn-t-secondary {
+    @apply text-secondary;
+    @apply hover:text-secondary/85 focus:text-secondary/85;
+  }
+  .btn-t-accent {
+    @apply text-accent;
+    @apply hover:text-accent/85 focus:text-accent/85;
+  }
+  .btn-t-muted {
+    @apply text-muted;
+  }
+  .btn-t-error {
+    @apply text-error;
+    @apply hover:text-error/85 focus:text-error/85;
+  }
+  .btn-t-warning {
+    @apply text-warning;
+    @apply hover:text-warning/85 focus:text-warning/85;
+  }
+  .btn-t-success {
+    @apply text-success;
+    @apply hover:text-success/85 focus:text-success/85;
+  }
+  .btn-t-info {
+    @apply text-info;
+    @apply hover:text-info/85 focus:text-info/85;
+  }
+
+  /**
+   * ------------------------
+   * Ghost Buttons
+   * ------------------------
+   */
+
+  .btn-g-primary {
+    @apply text-primary;
+    @apply hover:bg-primary/5 focus:bg-primary/5;
+  }
+  .btn-g-pop {
+    @apply text-pop;
+    @apply hover:bg-pop/5 focus:bg-pop/5;
+  }
+  .btn-g-secondary {
+    @apply text-secondary;
+    @apply hover:bg-secondary/5 focus:bg-secondary/5;
+  }
+  .btn-g-accent {
+    @apply text-accent;
+    @apply hover:bg-accent/5 focus:bg-accent/5;
+  }
+  .btn-g-muted {
+    @apply text-muted;
+  }
+  .btn-g-error {
+    @apply text-error;
+    @apply hover:bg-error/5 focus:bg-error/5;
+  }
+  .btn-g-warning {
+    @apply text-warning;
+    @apply hover:bg-warning/5 focus:bg-warning/5;
+  }
+  .btn-g-success {
+    @apply text-success;
+    @apply hover:bg-success/5 focus:bg-success/5;
+  }
+  .btn-g-info {
+    @apply text-info;
+    @apply hover:bg-info/5 focus:bg-info/5;
+  }
+
+  /**
+   * ------------------------
+   * Spinner
+   * ------------------------
+   */
+
+  .spinner {
+    @apply inline-flex size-[1em] rounded-full;
+    @apply border-t-[3px] border-t-current border-r-[3px] border-r-transparent;
+    @apply animate-spin;
   }
 }
