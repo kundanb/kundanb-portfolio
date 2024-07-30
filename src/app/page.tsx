@@ -4,7 +4,7 @@ export default function Home() {
       <div className="container">
         <h1 className="text-center font-disp font-bold text-7xl">Full-stack Developer</h1>
         <p className="mt-8 text-center text-2xl text-muted">
-          Hi, I'm <strong className="font-medium">Kundan Bhasin</strong>.
+          Hi, I&apos;m <strong className="font-medium">Kundan Bhasin</strong>.
         </p>
       </div>
     </div>
